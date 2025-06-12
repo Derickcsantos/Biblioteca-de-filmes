@@ -1,0 +1,24 @@
+movie-list/
+│
+├── models/
+│   └── Movie.js
+│
+├── controllers/
+│   └── movieController.js
+│
+├── routes/
+│   └── movieRoutes.js
+│
+├── views/
+│   ├── movies/
+│   │   ├── index.ejs
+│   │   └── create.ejs
+│   └── partials/
+│       └── header.ejs
+│
+├── public/
+│   └── uploads/     (para armazenar as capas)
+│
+├── app.js
+├── package.json
+└── .env  (a ser criado para a URI do Mongo)

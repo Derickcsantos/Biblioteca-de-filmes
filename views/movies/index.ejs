@@ -1,0 +1,46 @@
+<%- include('../partials/header') %>
+
+<h1>Filmes Cadastrados</h1>
+
+<table class="table table-striped table-bordered">
+  <thead class="table-dark">
+    <tr>
+      <th>Capa</th>
+      <th>Nome</th>
+      <th>Título</th>
+      <th>Duração</th>
+      <th>Diretor</th>
+      <th>Gênero</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if (movies.length === 0) { %>
+      <tr>
+        <td colspan="6" class="text-center">Nenhum filme cadastrado</td>
+      </tr>
+    <% } else { %>
+      <% movies.forEach(movie => { %>
+        <tr>
+          <td>
+            <% if (movie.capa) { %>
+              <img src="<%= movie.capa %>" alt="Capa do filme" style="height: 80px;" />
+            <% } else { %>
+              <span>Sem capa</span>
+            <% } %>
+          </td>
+          <td><%= movie.nome %></td>
+          <td><%= movie.titulo %></td>
+          <td><%= movie.duracao %></td>
+          <td><%= movie.diretor %></td>
+          <td><%= movie.genero %></td>
+        </tr>
+      <% }) %>
+    <% } %>
+  </tbody>
+</table>
+
+</div> <!-- container -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

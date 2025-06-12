@@ -1,0 +1,17 @@
+{
+  "name": "movie-list",
+  "version": "1.0.0",
+  "description": "Projeto de lista de filmes com Node.js, MongoDB, Express, EJS e Bootstrap",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.0",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "mongoose": "^7.3.1",
+    "multer": "^1.4.5-lts.1",
+    "dotenv": "^16.3.1"
+  }
+}
