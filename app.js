@@ -3,16 +3,29 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const movieRoutes = require('./routes/movieRoutes');
+const methodOverride = require('method-override');
 
 const app = express();
 
+app.use(methodOverride('_method'));
 // Conexão MongoDB
-mongoose.connect(process.env.MONGO_URI, {
+// Conexão MongoDB
+console.log('Tentando conectar ao MongoDB...');
+
+mongoose.connect('mongodb://localhost:27017/biblioteca-filmes', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
-.then(() => console.log('MongoDB conectado!'))
-.catch(err => console.error('Erro na conexão MongoDB:', err));
+
+.then(() => {
+  console.log('✅ MongoDB conectado com sucesso!');
+})
+.catch(err => {
+  console.error('❌ Erro na conexão MongoDB:');
+  console.error(err.name);
+  console.error(err.message);
+  console.error(err.stack);
+});
 
 // Middlewares
 app.use(express.urlencoded({ extended: true }));

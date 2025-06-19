@@ -4,60 +4,56 @@
   <div class="row justify-content-center">
     <div class="col-lg-8">
       <div class="card shadow-lg border-0 rounded-lg animate__animated animate__fadeIn">
-        <div class="card-header bg-primary text-white">
-          <h2 class="mb-0"><i class="fas fa-film me-2"></i>Cadastrar Novo Filme</h2>
+        <div class="card-header bg-warning text-dark">
+          <h2 class="mb-0"><i class="fas fa-edit me-2"></i>Editar Filme</h2>
         </div>
         <div class="card-body">
-          <form action="/movies/new" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+          <form action="/movies/<%= movie._id %>?_method=PUT" method="POST" class="needs-validation" novalidate>
             <div class="mb-4">
               <label for="nome" class="form-label fw-bold">Nome*</label>
-              <input type="text" name="nome" id="nome" class="form-control form-control-lg" required />
+              <input type="text" class="form-control form-control-lg" id="nome" name="nome" value="<%= movie.nome %>" required>
               <div class="invalid-feedback">Por favor, insira o nome do filme.</div>
             </div>
 
             <div class="mb-4">
               <label for="titulo" class="form-label fw-bold">Título*</label>
-              <input type="text" name="titulo" id="titulo" class="form-control form-control-lg" required />
+              <input type="text" class="form-control form-control-lg" id="titulo" name="titulo" value="<%= movie.titulo %>" required>
               <div class="invalid-feedback">Por favor, insira o título do filme.</div>
             </div>
 
             <div class="row">
               <div class="col-md-6 mb-4">
                 <label for="duracao" class="form-label fw-bold">Duração*</label>
-                <input type="text" name="duracao" id="duracao" class="form-control form-control-lg" placeholder="Ex: 2h 15min" required />
+                <input type="text" class="form-control form-control-lg" id="duracao" name="duracao" value="<%= movie.duracao %>" required>
                 <div class="invalid-feedback">Por favor, insira a duração do filme.</div>
               </div>
 
               <div class="col-md-6 mb-4">
                 <label for="genero" class="form-label fw-bold">Gênero*</label>
-                <input type="text" name="genero" id="genero" class="form-control form-control-lg" required />
+                <input type="text" class="form-control form-control-lg" id="genero" name="genero" value="<%= movie.genero %>" required>
                 <div class="invalid-feedback">Por favor, insira o gênero do filme.</div>
               </div>
             </div>
 
             <div class="mb-4">
               <label for="diretor" class="form-label fw-bold">Diretor*</label>
-              <input type="text" name="diretor" id="diretor" class="form-control form-control-lg" required />
+              <input type="text" class="form-control form-control-lg" id="diretor" name="diretor" value="<%= movie.diretor %>" required>
               <div class="invalid-feedback">Por favor, insira o diretor do filme.</div>
             </div>
 
             <div class="mb-4">
-              <label for="capa" class="form-label fw-bold">Capa do Filme</label>
-              <div class="file-upload-wrapper">
-                <input type="file" name="capa" id="capa" class="form-control form-control-lg file-upload-input" accept="image/*" onchange="previewImage(this)" />
-                <label for="capa" class="file-upload-label">
-                  <i class="fas fa-cloud-upload-alt me-2"></i>
-                  <span class="file-upload-text">Escolha uma imagem...</span>
-                </label>
-              </div>
-              <div class="image-preview mt-3 text-center" id="imagePreview" style="display: none;">
-                <img id="preview" class="img-thumbnail" style="max-height: 200px;" />
-              </div>
+              <label for="capa" class="form-label fw-bold">URL da Capa</label>
+              <input type="text" class="form-control form-control-lg" id="capa" name="capa" value="<%= movie.capa %>">
+              <% if (movie.capa) { %>
+                <div class="mt-2 text-center">
+                  <img src="<%= movie.capa %>" alt="Capa atual" class="img-thumbnail" style="max-height: 200px;">
+                </div>
+              <% } %>
             </div>
 
             <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
-              <button type="submit" class="btn btn-primary btn-lg px-4 me-md-2">
-                <i class="fas fa-save me-1"></i> Cadastrar Filme
+              <button type="submit" class="btn btn-warning btn-lg px-4 me-md-2">
+                <i class="fas fa-save me-1"></i> Salvar Alterações
               </button>
               <a href="/movies" class="btn btn-outline-secondary btn-lg px-4">
                 <i class="fas fa-times me-1"></i> Cancelar
@@ -87,25 +83,6 @@
       }, false)
     })
   })()
-
-  // Image preview
-  function previewImage(input) {
-    const preview = document.getElementById('preview')
-    const previewContainer = document.getElementById('imagePreview')
-    const file = input.files[0]
-    const reader = new FileReader()
-    
-    if (file) {
-      reader.readAsDataURL(file)
-      reader.onload = function() {
-        preview.src = reader.result
-        previewContainer.style.display = 'block'
-      }
-    } else {
-      preview.src = ''
-      previewContainer.style.display = 'none'
-    }
-  }
 </script>
 </body>
 </html>

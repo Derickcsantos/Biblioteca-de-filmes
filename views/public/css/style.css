@@ -1,0 +1,9 @@
+@media (max-width: 576px) {
+  .btn-sm i.me-1 {
+    margin-right: 0.25rem !important;
+  }
+  .btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+  }
+}

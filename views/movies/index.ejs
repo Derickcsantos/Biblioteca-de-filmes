@@ -1,46 +1,89 @@
 <%- include('../partials/header') %>
 
-<h1>Filmes Cadastrados</h1>
+<div class="container py-5 animate__animated animate__fadeIn">
+  <div class="d-flex justify-content-between align-items-center mb-5">
+    <h1 class="display-5 fw-bold"><i class="fas fa-film text-primary me-2"></i>Filmes Cadastrados</h1>
+    <a href="/movies/new" class="btn btn-primary btn-lg">
+      <i class="fas fa-plus me-1"></i> Novo Filme
+    </a>
+  </div>
 
-<table class="table table-striped table-bordered">
-  <thead class="table-dark">
-    <tr>
-      <th>Capa</th>
-      <th>Nome</th>
-      <th>Título</th>
-      <th>Duração</th>
-      <th>Diretor</th>
-      <th>Gênero</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% if (movies.length === 0) { %>
-      <tr>
-        <td colspan="6" class="text-center">Nenhum filme cadastrado</td>
-      </tr>
-    <% } else { %>
-      <% movies.forEach(movie => { %>
-        <tr>
-          <td>
-            <% if (movie.capa) { %>
-              <img src="<%= movie.capa %>" alt="Capa do filme" style="height: 80px;" />
-            <% } else { %>
-              <span>Sem capa</span>
-            <% } %>
-          </td>
-          <td><%= movie.nome %></td>
-          <td><%= movie.titulo %></td>
-          <td><%= movie.duracao %></td>
-          <td><%= movie.diretor %></td>
-          <td><%= movie.genero %></td>
-        </tr>
-      <% }) %>
-    <% } %>
-  </tbody>
-</table>
-
-</div> <!-- container -->
+  <% if (movies.length === 0) { %>
+    <div class="card shadow-sm border-0 text-center py-5">
+      <div class="card-body">
+        <i class="fas fa-film fa-4x text-muted mb-4"></i>
+        <h3 class="text-muted">Nenhum filme cadastrado</h3>
+        <p class="text-muted">Comece adicionando um novo filme ao catálogo</p>
+        <a href="/movies/new" class="btn btn-primary mt-3">
+          <i class="fas fa-plus me-1"></i> Adicionar Filme
+        </a>
+      </div>
+    </div>
+  <% } else { %>
+    <div class="table-responsive">
+      <table class="table table-hover align-middle shadow-sm rounded overflow-hidden">
+        <thead class="table-dark">
+          <tr>
+            <th style="width: 120px;">Capa</th>
+            <th>Nome</th>
+            <th>Título</th>
+            <th>Duração</th>
+            <th>Diretor</th>
+            <th>Gênero</th>
+            <th style="width: 180px;">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% movies.forEach(movie => { %>
+            <tr class="animate__animated animate__fadeIn">
+              <td>
+                <% if (movie.capa) { %>
+                  <img src="<%= movie.capa %>" alt="Capa do filme" class="img-fluid rounded" style="height: 80px; width: 60px; object-fit: cover;" />
+                <% } else { %>
+                  <div class="bg-light d-flex align-items-center justify-content-center rounded" style="height: 80px; width: 60px;">
+                    <i class="fas fa-image text-muted"></i>
+                  </div>
+                <% } %>
+              </td>
+              <td class="fw-bold"><%= movie.nome %></td>
+              <td><%= movie.titulo %></td>
+              <td><%= movie.duracao %></td>
+              <td><%= movie.diretor %></td>
+              <td>
+                <span class="badge bg-primary"><%= movie.genero %></span>
+              </td>
+              <td>
+                <div class="d-flex gap-2">
+                  <a href="/movies/<%= movie._id %>/edit" class="btn btn-sm btn-warning flex-grow-1">
+                    <i class="fas fa-edit me-1"></i> Editar
+                  </a>
+                  <form action="/movies/<%= movie._id %>?_method=DELETE" method="POST" class="flex-grow-1">
+                    <button type="submit" class="btn btn-sm btn-danger w-100" onclick="return confirm('Deseja realmente excluir este filme?')">
+                      <i class="fas fa-trash me-1"></i> Deletar
+                    </button>
+                  </form>
+                </div>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  <% } %>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<script>
+  // Adiciona efeito hover nas linhas da tabela
+  document.querySelectorAll('tbody tr').forEach(row => {
+    row.addEventListener('mouseenter', () => {
+      row.classList.add('animate__animated', 'animate__pulse')
+    })
+    row.addEventListener('mouseleave', () => {
+      row.classList.remove('animate__animated', 'animate__pulse')
+    })
+  })
+</script>
 </body>
 </html>
