@@ -1,6 +1,4 @@
-Aqui está um arquivo README.txt completo para seu repositório, com informações sobre o projeto, configuração, uso e tecnologias:
 
-text
 # Sistema de Gerenciamento de Filmes
 
 Um sistema web completo para cadastro, edição e visualização de filmes, desenvolvido com Node.js, Express e EJS.
@@ -43,21 +41,25 @@ Um sistema web completo para cadastro, edição e visualização de filmes, dese
    git clone [URL_DO_REPOSITORIO]
    cd nome-do-repositorio
    npm install
+   ```
 Configuração:
 
 Crie um arquivo .env na raiz do projeto com as variáveis:
 
-text
+  ```bash
 PORT=3000
 MONGODB_URI=sua_string_de_conexao
 SECRET_KEY=sua_chave_secreta
+  ```
 Execução:
 
-bash
+  ```bash 
 npm start
+  ```
 O servidor estará disponível em: http://localhost:3000
 
 📂 Estrutura de Arquivos
+  ```bash
 /
 ├── controllers/ # Lógica das rotas
 ├── models/ # Modelos do banco de dados
@@ -73,50 +75,30 @@ O servidor estará disponível em: http://localhost:3000
 ├── app.js # Configuração do Express
 ├── package.json
 └── README.txt
-
+  ```
 🌟 Recursos Avançados
 Animações suaves em todas as transições
 
-Design mobile-first
+ - Design mobile-first
 
-Validação em tempo real de formulários
+ - Validação em tempo real de formulários
 
-Preview de imagens antes do upload
+ - Preview de imagens antes do upload
 
-Confirmação antes de ações críticas (exclusão)
+ - Confirmação antes de ações críticas (exclusão)
 
-Feedback visual para o usuário
+ - Feedback visual para o usuário
 
-🤝 Como Contribuir
-Faça um fork do projeto
-
-Crie uma branch para sua feature (git checkout -b feature/AmazingFeature)
-
-Commit suas mudanças (git commit -m 'Add some AmazingFeature')
-
-Push para a branch (git push origin feature/AmazingFeature)
-
-Abra um Pull Request
-
-📄 Licença
+# 📄 Licença
 Distribuído sob a licença MIT. Veja LICENSE para mais informações.
 
-✉️ Contato
-Seu Nome - @seu_twitter - seuemail@exemplo.com
+# ✉️ Contato
+Dérick Campos Santos
 
-Link do Projeto: https://github.com/seuusuario/seurepositorio
+ - [Currículo web](https://curriculoweb-dcs.netlify.app/)
+ - [Linkedin](https://www.linkedin.com/in/derick-campos-santos/)
+ - [GitHub](https://github.com/derickcsantos)
+ - [Link do Projeto](https://github.com/Derickcsantos/Biblioteca-de-filmes)
 
-text
 
-### Observações:
-1. Substitua os placeholders ([URL_DO_REPOSITORIO], seu nome, contatos, etc.) pelas suas informações reais
-2. Adicione ou remova seções conforme necessário para seu projeto específico
-3. Para um README mais visual, você pode converter posteriormente para Markdown (README.md)
-4. Inclua informações adicionais sobre seu banco de dados específico se não for MongoDB
 
-Você pode personalizar ainda mais este README com:
-- Capturas de tela do sistema
-- Badges de status (build, versionamento)
-- Informações mais detalhadas sobre a API (se aplicável)
-- Requisitos do sistema
-- Histórico de versões
